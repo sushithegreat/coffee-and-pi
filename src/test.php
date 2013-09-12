@@ -1,6 +1,10 @@
 <?php
 
-require(dirname(__FILE__)."/libraries/PhpGpio/Gpio.php");
+require_once(dirname(__FILE__)."/libraries/PhpGpio/Gpio.php");
+require_once(dirname(__FILE__)."/libraries/PhpGpio/Pi.php");
+
+
+use PhpGpio\Gpio;
 
 //power pin constant
 define("POWERPIN", 23);
