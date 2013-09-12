@@ -25,3 +25,5 @@ $app->get('/power', function () {
 	echo "Unexporting all pins\n";
 	$gpio->unexportAll();
 });
+
+$app->run();
