@@ -1,8 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
-
-use PhpGpio\Gpio;
+require_once 'src/php-gpio/src/PhpGpio/Gpio.php';
 
 //power pin constant
 define("POWERPIN", 23);
