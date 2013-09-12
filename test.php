@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 use PhpGpio\Gpio;
 
 //power pin constant
-define("POWERPIN", 23)
+define("POWERPIN", 23);
 
 echo "Setting up power pin\n";
 $gpio = new GPIO();
