@@ -8,7 +8,7 @@ use PhpGpio\Gpio;
 define("POWERPIN", 23);
 
 $app = new \Slim\Slim();
-$app->get('/power', function () {
+$app->post('/power', function () {
     echo "Setting up power pin\n";
 	$gpio = new GPIO();
 	$gpio->setup(POWERPIN, "out");
