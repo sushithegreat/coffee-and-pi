@@ -1,0 +1,12 @@
+[
+    {
+        "alarmId": 1, 
+        "name": "Test alarm 1", 
+        "enabled": false
+    }, 
+    {
+        "alarmId": 2, 
+        "name": "Test alarm 2", 
+        "enabled": true
+    }
+]
