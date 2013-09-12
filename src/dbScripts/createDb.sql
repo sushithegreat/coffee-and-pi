@@ -6,7 +6,7 @@ use coffeeAndPi;
 create table alarms (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 	time TIME  NOT NULL,
-	day ENUM('Sun', 'Mon' 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
+	day ENUM('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
 	);
 
 create table tasks (
