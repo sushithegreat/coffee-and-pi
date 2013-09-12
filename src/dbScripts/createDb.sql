@@ -1,4 +1,4 @@
-drop database coffeeAndPi;
+drop database IF EXISTS coffeeAndPi;
 create database coffeeAndPi;
 
 use coffeeAndPi;
