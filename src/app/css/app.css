@@ -2,19 +2,20 @@
 a, .nav, .pagination, .carousel a { cursor: pointer; }
 
 #container {
-	background: #020031;
+	background: #231513;
+	color: #fff;
 }
 #header {
 	position: relative;
     padding: 10px 0;
     color: #fff;
     text-align: center;
-    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
-    background: -moz-linear-gradient(45deg, #020031 0%, #6d3353 100%);
-    background: -o-linear-gradient(45deg, #020031 0%,#6d3353 100%);
-    background: -ms-linear-gradient(45deg, #020031 0%,#6d3353 100%);
-    background: linear-gradient(180deg, #020031 0%,#6d3353 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
+    text-shadow: 1px 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+    background: -moz-linear-gradient(45deg, #231513 0%, #7C5852 100%);
+    background: -o-linear-gradient(45deg, #231513 0%,#7C5852 100%);
+    background: -ms-linear-gradient(45deg, #231513 0%,#7C5852 100%);
+    background: linear-gradient(180deg, #231513 0%,#7C5852 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#231513', endColorstr='#7C5852',GradientType=1 );
     -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
     -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
     box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
@@ -23,10 +24,40 @@ a, .nav, .pagination, .carousel a { cursor: pointer; }
     -webkit-border-radius: 0;
     -o-border-radius: 0;
 }
+#header h1 {
+	background: url("../img/coffee.png") no-repeat top left;
+	height: 50px;
+	width: 260px;
+	margin: 5px auto;
+}
 #contentBody {
-	padding: 20px;
+	padding: 20px 0;
 	text-align: center;
+	font-size: 18px;
 }
 .mb-page {
-	background-color: #6d3353;
+	background-color: #7C5852;
 }
+
+#countDown {
+	font-family: Verdana, Arial, sans-serif;
+	color: #fff;
+	font-size: 25px;
+	padding: 10px;
+	margin: 55px 10px 55px 55px;
+}
+.timeDigits {
+	padding: 15px;
+	font-size: 55px;
+	background: #fff;
+	color: #000;
+	width: 100px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+}
+#alarmEnabled {
+	margin: 35px 0;
+}
+
