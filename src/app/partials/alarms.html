@@ -1,10 +1,25 @@
 <div id="header">
+	<a ng-tap="$navigate.go('/home')" class="backButton">Back</a>
 	<h1>BREWPi</h1>
 </div>
 <div id="contentBody">
-	<ul class="alarms">
-		<li ng-repeat="alarm in alarms">
-			<a ng-tap="$navigate.go('/alarms/'+alarm.alarmId)">{{alarm.name}}</a>
-		</li>
-	</ul>
+	<div class="alarmList">
+		<ul id="nlists">
+			<li ng-repeat="alarm in alarms">
+				<div ng-tap="$navigate.go('/alarms/'+alarm.alarmId)" class="pointer">
+					<span class="alarmTime">{{alarm.time}}</span>
+					<span class="alarmDays">
+						<span class="{{alarm.su | iif : 'dayEnabled' : 'dayNotEnabled'}}">S</span>
+						<span class="{{alarm.mo | iif : 'dayEnabled' : 'dayNotEnabled'}}">M</span>
+						<span class="{{alarm.tu | iif : 'dayEnabled' : 'dayNotEnabled'}}">T</span>
+						<span class="{{alarm.we | iif : 'dayEnabled' : 'dayNotEnabled'}}">W</span>
+						<span class="{{alarm.tu | iif : 'dayEnabled' : 'dayNotEnabled'}}">T</span>
+						<span class="{{alarm.fr | iif : 'dayEnabled' : 'dayNotEnabled'}}">F</span>
+						<span class="{{alarm.sa | iif : 'dayEnabled' : 'dayNotEnabled'}}">S</span>
+					</span>
+					<span class="alarmEnabled"><img src="img/{{alarm.enabled | iif : 'alarmEnabled.png' : 'alarmDisabled.png'}}" alt="" /></span>
+				</div>
+			</li>
+		</ul>
+	</div>
 </div>

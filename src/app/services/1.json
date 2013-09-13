@@ -1,5 +1,12 @@
 {
-    "alarmId": 1, 
-    "name": "Test alarm 1", 
-    "enabled": false
+	"alarmId": 1, 
+	"su": true,
+	"mo": false,
+	"tu": true,
+	"we": true,
+	"th": true,
+	"fr": false,
+	"sa": true,
+	"time": 1379084400,
+	"enabled": false
 }
