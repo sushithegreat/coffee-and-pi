@@ -27,7 +27,7 @@ a, .nav, .pagination, .carousel a { cursor: pointer; }
 #header h1 {
 	background: url("../img/coffee.png") no-repeat top left;
 	height: 50px;
-	width: 400px;
+	width: 260px;
 	margin: 5px auto;
 }
 #contentBody {
@@ -40,7 +40,7 @@ a, .nav, .pagination, .carousel a { cursor: pointer; }
 }
 
 #countDown {
-	font-family: "Courier New";
+	font-family: Verdana, Arial, sans-serif;
 	color: #fff;
 	font-size: 25px;
 	padding: 10px;
