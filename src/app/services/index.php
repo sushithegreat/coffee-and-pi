@@ -1,6 +1,5 @@
 <?php
 
-echo "test";
 require_once(dirname(dirname(dirname(__FILE__))).'/libraries/vendor/autoload.php');
 
 use PhpGpio\Gpio;
