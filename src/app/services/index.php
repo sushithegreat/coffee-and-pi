@@ -10,26 +10,35 @@ define("POWERPIN", 23);
 
 $app = new \Slim\Slim();
 
-$app->get('/', function () use($app) {
-    echo "Testing";
-});
+//set up routes
+$app->get('/', 'test');
+$app->get('/powerOn', 'powerOn');
+$app->get('/powerOff', 'powerOff');
 
-$app->get('/power', function () use($app) {
+//run Slim
+$app->run();
+
+//functions
+function test() {
+    echo "Services are up and running.  Good job!";
+}
+
+function powerOn() {
     echo "Setting up power pin\n";
 	$gpio = new GPIO();
 	$gpio->setup(POWERPIN, "out");
 
 	echo "Turning on power pin\n";
 	$gpio->output(POWERPIN, 1);
+});
 
-	echo "Sleeping!\n";
-	sleep(3);
+function powerOff() {
+    echo "Setting up power pin\n";
+	$gpio = new GPIO();
+	$gpio->setup(POWERPIN, "out");
 
 	echo "Turning off power pin\n";
 	$gpio->output(POWERPIN, 0);
-
-	echo "Unexporting all pins\n";
-	$gpio->unexportAll();
 });
 
-$app->run();
+
