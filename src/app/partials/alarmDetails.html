@@ -5,7 +5,12 @@
 <div id="contentBody">
 	Edit Alarm<br />
 	<br />
-	<span class="alarmTime">{{alarm.time}}</span>
+	<div ng-controller="TimepickerCtrl">
+	  <div ng-model="alarmTime" ng-change="changed()" class="well well-small" style="display:inline-block;">
+	    <timepicker hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+	  </div>
+	</div>
+	<span class="alarmTime">{{alarm.time | stringToTime}}</span>
 	<span class="alarmDays">
 		<span class="{{alarm.su | iif : 'dayEnabled' : 'dayNotEnabled'}}">S</span>
 		<span class="{{alarm.mo | iif : 'dayEnabled' : 'dayNotEnabled'}}">M</span>
@@ -18,13 +23,4 @@
 	<span class="alarmEnabled"><img src="{{alarm.enabled | iif : 'img/alarmEnabled.png' : 'img/alarmDisabled.png'}}" alt="" /></span>
 	&nbsp;&nbsp;
 	<a class="btn btn-primary" ng-tap="$navigate.go('/home')">Delete</a>
-	
-	<br />
-	<div ng-controller="TimepickerDemoCtrl">
-	  <div ng-model="mytime" ng-change="changed()" class="well well-small" style="display:inline-block;">
-	    <timepicker hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">03:53 pm</timepicker>
-	  </div>
-
-	  <pre>Time is: {{mytime | date:'shortTime' }}</pre>
-	</div>
 </div>
