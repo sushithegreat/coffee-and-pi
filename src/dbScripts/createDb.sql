@@ -1,5 +1,5 @@
 create table alarms (
-	id INT NOT NULL PRIMARY KEY, 
+	id INTEGER PRIMARY KEY, 
 	su BIT,
 	mo BIT,
 	tu BIT, 
