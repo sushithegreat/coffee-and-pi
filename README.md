@@ -3,7 +3,7 @@ coffee-and-pi
 
 A coffee-brewing scheduler for Raspberry Pi
 
-To create the database, simply run 'sqlite3 coffeeAndPi < createDb.sql'
+To create the database, simply run 'sqlite3 coffeeAndPi < createDb.sql' in the /src/app/services/ directory
 
 
 
