@@ -1,10 +1,5 @@
-drop database IF EXISTS coffeeAndPi;
-create database coffeeAndPi;
-
-use coffeeAndPi;
-
 create table alarms (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+	id INT NOT NULL AUTOINCREMENT PRIMARY KEY, 
 	time TIME  NOT NULL,
 	su BIT,
 	mo BIT,
