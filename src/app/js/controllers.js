@@ -65,6 +65,7 @@ function AlarmDetailCtrl($scope, $navigate, $routeParams, AlarmService) {
 	$scope.alarm        = AlarmService.get({alarmId: $routeParams.alarmId}, function(alarm) {
 		// $scope.mainImageUrl = alarm.images[0];
 	});
+	console.log($scope.alarm);
 }
 
 function AlertDemoCtrl($scope) {
@@ -83,15 +84,17 @@ function AlertDemoCtrl($scope) {
 
 }
 
-function TimepickerDemoCtrl($scope) {
-	  $scope.mytime = new Date();
+function TimepickerCtrl($scope) {
+	var initial = $scope.alarm.time;
+	console.log("hey");
+	console.log($scope.alarm.alarmId);
+	$scope.alarmTime = new Date(initial*1000);
 
-	  $scope.hstep = 1;
-	  $scope.mstep = 1;
+	$scope.hstep = 1;
+	$scope.mstep = 1;
+	$scope.ismeridian = true;
 
-	  $scope.ismeridian = true;
-
-	  $scope.changed = function () {
-	    console.log('Time changed to: ' + $scope.mytime);
-	  };
+	$scope.changed = function () {
+		console.log('Time changed to: ' + $scope.alarmTime);
 	};
+};
