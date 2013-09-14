@@ -47,7 +47,7 @@ function getAlarm($id) {
         $stmt->execute();
         $alarm = $stmt->fetchObject();
         if($alarm == false){
-        	echo '{"error":{"text": 'Could not find alarm with that id'"}}';
+        	echo '{"error":{"text": "Could not find alarm with that id"}}';
         }
         else{
         	echo json_encode($alarm);
