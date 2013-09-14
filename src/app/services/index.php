@@ -14,6 +14,7 @@ $app = new \Slim\Slim();
 $app->get('/', 'test');
 $app->get('/powerOn', 'powerOn');
 $app->get('/powerOff', 'powerOff');
+$app->get('/alarms/:id', 'getAlarm');
 
 //run Slim
 $app->run();
@@ -24,21 +25,31 @@ function test() {
 }
 
 function powerOn() {
-    echo "Setting up power pin\n";
 	$gpio = new GPIO();
 	$gpio->setup(POWERPIN, "out");
-
-	echo "Turning on power pin\n";
 	$gpio->output(POWERPIN, 1);
 }
 
 function powerOff() {
-    echo "Setting up power pin\n";
 	$gpio = new GPIO();
 	$gpio->setup(POWERPIN, "out");
-
-	echo "Turning off power pin\n";
 	$gpio->output(POWERPIN, 0);
 }
+
+function getAlarm($id) {
+	$sql = "SELECT * FROM alarms WHERE id=:id";
+
+    try {
+        $db = new PDO('sqlite:coffeeAndPi');
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $id);
+        $stmt->execute();
+        $alarms = $stmt->fetchObject();
+        echo json_encode($alarms);
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+}
+
 
 
