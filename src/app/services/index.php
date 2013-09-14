@@ -30,7 +30,7 @@ function powerOn() {
 
 	echo "Turning on power pin\n";
 	$gpio->output(POWERPIN, 1);
-});
+}
 
 function powerOff() {
     echo "Setting up power pin\n";
@@ -39,6 +39,6 @@ function powerOff() {
 
 	echo "Turning off power pin\n";
 	$gpio->output(POWERPIN, 0);
-});
+}
 
 
