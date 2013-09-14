@@ -69,13 +69,13 @@ class Gpio
             return false;
         }
 
-        // if exported, unexport it first
-        if ($this->isExported($pinNo)) {
-            $this->unexport($pinNo);
+        // if not exported, export it first
+        if (!$this->isExported($pinNo)) {
+            // Export pin
+            file_put_contents('/sys/class/gpio/export', $pinNo);
+	    // Wait for udev permissions to apply
+	    usleep(50000);
         }
-
-        // Export pin
-        file_put_contents('/sys/class/gpio/export', $pinNo);
 
         // if valid direction then set direction
         if ($this->isValidDirection($direction)) {
