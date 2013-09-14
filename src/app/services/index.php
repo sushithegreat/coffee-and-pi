@@ -1,6 +1,7 @@
 <?php
 
-require_once(dirname(dirname(dirname(__FILE__))).'/libraries/vendor/autoload.php');
+require_once(dirname(__FILE__).'/libraries/vendor/autoload.php');
+require_once(dirname(__FILE__).'/libraries/vendor/php-gpio/vendor/autoload.php');
 
 use PhpGpio\Gpio;
 
@@ -8,7 +9,12 @@ use PhpGpio\Gpio;
 define("POWERPIN", 23);
 
 $app = new \Slim\Slim();
-$app->post('/power', function () {
+
+$app->get('/', function () use($app) {
+    echo "Testing";
+});
+
+$app->get('/power', function () use($app) {
     echo "Setting up power pin\n";
 	$gpio = new GPIO();
 	$gpio->setup(POWERPIN, "out");

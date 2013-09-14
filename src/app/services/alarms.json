@@ -1,12 +1,38 @@
 [
-    {
-        "alarmId": 1, 
-        "name": "Test alarm 1", 
-        "enabled": false
-    }, 
-    {
-        "alarmId": 2, 
-        "name": "Test alarm 2", 
-        "enabled": true
-    }
+	{
+		"alarmId": 1, 
+		"su": true,
+		"mo": false,
+		"tu": true,
+		"we": true,
+		"th": true,
+		"fr": false,
+		"sa": true,
+		"time": 1379080800,
+		"enabled": false
+	}, 
+	{
+		"alarmId": 2, 
+		"su": false,
+		"mo": false,
+		"tu": true,
+		"we": true,
+		"th": true,
+		"fr": false,
+		"sa": false,
+		"time": 1379080800,
+		"enabled": true
+	},
+	{
+		"alarmId": 3, 
+		"su": false,
+		"mo": true,
+		"tu": false,
+		"we": false,
+		"th": false,
+		"fr": false,
+		"sa": false,
+		"time": 1379084400,
+		"enabled": true
+	}
 ]

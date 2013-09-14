@@ -3,10 +3,11 @@
 /* Controllers */
 function HomeCtrl($scope, $navigate) {
 	$scope.$navigate = $navigate;
-	$scope.countDownHour  = "--";    
-	$scope.countDownMin   = "--";    
-	$scope.countDownSec   = "--";    
-	$scope.countDownAmPm  = "--";
+	$scope.countDownHour  = "---";    
+	$scope.countDownMin   = "---";    
+	$scope.countDownSec   = "---";    
+	$scope.countDownAmPm  = "---";
+	$scope.todaysDate     = "---";
     var timer = setInterval(function(){
 		var today=new Date();
 		var h=today.getHours();
@@ -53,15 +54,15 @@ function HomeCtrl($scope, $navigate) {
 	$scope.nextBrew = "Monday 05:00am";
 }
 
-function AlarmListCtrl($scope, $navigate, Alarm) {
+function AlarmListCtrl($scope, $navigate, AlarmService) {
 	$scope.$navigate = $navigate;
-	$scope.alarms    = Alarm.query();
+	$scope.alarms    = AlarmService.query();
 	$scope.orderProp = 'alarmId';
 }
  
-function AlarmDetailCtrl($scope, $navigate, $routeParams, Alarm) {
+function AlarmDetailCtrl($scope, $navigate, $routeParams, AlarmService) {
 	$scope.$navigate    = $navigate;
-	$scope.alarm        = Alarm.get({alarmId: $routeParams.alarmId}, function(alarm) {
+	$scope.alarm        = AlarmService.get({alarmId: $routeParams.alarmId}, function(alarm) {
 		// $scope.mainImageUrl = alarm.images[0];
 	});
 }
@@ -81,3 +82,16 @@ function AlertDemoCtrl($scope) {
   };
 
 }
+
+function TimepickerDemoCtrl($scope) {
+	  $scope.mytime = new Date();
+
+	  $scope.hstep = 1;
+	  $scope.mstep = 1;
+
+	  $scope.ismeridian = true;
+
+	  $scope.changed = function () {
+	    console.log('Time changed to: ' + $scope.mytime);
+	  };
+	};

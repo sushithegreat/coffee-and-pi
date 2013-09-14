@@ -1,0 +1,12 @@
+{
+	"alarmId": 3, 
+	"su": true,
+	"mo": false,
+	"tu": false,
+	"we": false,
+	"th": false,
+	"fr": false,
+	"sa": true,
+	"time": 1379066400,
+	"enabled": false
+}
