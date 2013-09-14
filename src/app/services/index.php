@@ -45,7 +45,12 @@ function getAlarm($id) {
         $stmt->bindParam("id", $id);
         $stmt->execute();
         $alarms = $stmt->fetchObject();
-        echo json_encode($alarms);
+        if($alarms == false){
+        	echo '{"error":{"text": Could not find alarm with that id"}}';
+        }
+        else{
+        	echo json_encode($alarms);
+        }        
     } catch(PDOException $e) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
