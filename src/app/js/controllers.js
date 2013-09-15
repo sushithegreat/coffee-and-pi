@@ -56,45 +56,66 @@ function HomeCtrl($scope, $navigate) {
 
 function AlarmListCtrl($scope, $navigate, AlarmService) {
 	$scope.$navigate = $navigate;
-	$scope.alarms    = AlarmService.query();
-	$scope.orderProp = 'alarmId';
+	AlarmService.query(function(alarms) {
+		$scope.alarms = [];
+		var len = alarms.length;
+		for(var i = 0; i < len; i++) {
+			$scope.alarms[i] = {};
+			$scope.alarms[i].id = alarms[i].id;
+			$scope.alarms[i].time = alarms[i].time;
+			$scope.alarms[i].enabled = alarms[i].enabled == "1";
+			$scope.alarms[i].su = alarms[i].su == "1";
+			$scope.alarms[i].mo = alarms[i].mo == "1";
+			$scope.alarms[i].tu = alarms[i].tu == "1";
+			$scope.alarms[i].we = alarms[i].we == "1";
+			$scope.alarms[i].th = alarms[i].th == "1";
+			$scope.alarms[i].fr = alarms[i].fr == "1";
+			$scope.alarms[i].sa = alarms[i].sa == "1";
+		}
+		$scope.orderProp = 'id';
+	});
 }
  
 function AlarmDetailCtrl($scope, $navigate, $routeParams, AlarmService) {
 	$scope.$navigate    = $navigate;
-	$scope.alarm        = AlarmService.get({alarmId: $routeParams.alarmId}, function(alarm) {
-		// $scope.mainImageUrl = alarm.images[0];
+	$scope.displayDeleteAlarmConfirmation = false;
+	$scope.alarm        = AlarmService.get({id: $routeParams.id}, function(alarm) {
+		$scope.alarm.id = alarm.id;
+		$scope.alarm.time = alarm.time;
+		$scope.alarm.enabled = alarm.enabled == "1";
+		$scope.alarm.su = alarm.su == "1";
+		$scope.alarm.mo = alarm.mo == "1";
+		$scope.alarm.tu = alarm.tu == "1";
+		$scope.alarm.we = alarm.we == "1";
+		$scope.alarm.th = alarm.th == "1";
+		$scope.alarm.fr = alarm.fr == "1";
+		$scope.alarm.sa = alarm.sa == "1";
 	});
-	console.log($scope.alarm);
-}
-
-function AlertDemoCtrl($scope) {
-  $scope.alerts = [
-    { type: 'error', msg: 'Oh snap! Change a few things up and try submitting again.' }, 
-    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-  ];
-
-  $scope.addAlert = function() {
-    $scope.alerts.push({msg: "Another alert!"});
-  };
-
-  $scope.closeAlert = function(index) {
-    $scope.alerts.splice(index, 1);
-  };
-
-}
-
-function TimepickerCtrl($scope) {
-	var initial = $scope.alarm.time;
-	console.log("hey");
-	console.log($scope.alarm.alarmId);
-	$scope.alarmTime = new Date(initial*1000);
-
-	$scope.hstep = 1;
-	$scope.mstep = 1;
-	$scope.ismeridian = true;
-
-	$scope.changed = function () {
-		console.log('Time changed to: ' + $scope.alarmTime);
+	
+	$scope.toggleDeleteConfirmationPopup = function(bool) {
+	    if (bool === true) {
+	        $scope.displayDeleteAlarmConfirmation = true;
+	    } else {
+	        $scope.displayDeleteAlarmConfirmation = false;
+	    }
 	};
+	
+	$scope.deleteAlarm = function (alarmId) {
+		AlarmService.remove({id:alarmId}, function() {
+			$scope.displayDeleteAlarmConfirmation = false;
+			$navigate.go('/alarms');
+		});
+	};
+}
+
+function TimepickerCtrl($scope, $routeParams, AlarmService) {
+	AlarmService.get({id: $routeParams.id}, function(alarm) {
+		console.log(alarm);
+		var initialTime = alarm.time;
+		$scope.myTime = new Date(initialTime*1000);
+
+		$scope.hstep = 1;
+		$scope.mstep = 1;
+		$scope.ismeridian = true;
+	});
 };

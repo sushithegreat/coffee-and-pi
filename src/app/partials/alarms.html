@@ -6,7 +6,7 @@
 	<div class="alarmList">
 		<ul id="nlists">
 			<li ng-repeat="alarm in alarms">
-				<div ng-tap="$navigate.go('/alarms/'+alarm.alarmId)" class="pointer">
+				<div ng-tap="$navigate.go('/alarms/'+alarm.id)" class="pointer">
 					<span class="alarmTime">{{alarm.time | stringToTime}}</span>
 					<span class="alarmDays">
 						<span class="{{alarm.su | iif : 'dayEnabled' : 'dayNotEnabled'}}">S</span>
