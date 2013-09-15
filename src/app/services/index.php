@@ -129,13 +129,13 @@ function addAlarm() {
     }
 }
 
-// @todo this doesn't work and i am not sure why. getting false back for count
-// no errors are produced
-// it is definitely being called. i get the success:true back
 function removeAlarm($id) {
-    try {
-        $db    = new PDO('sqlite:coffeeAndPi');
-        $count = $db->exec("DELETE FROM alarms WHERE id=".$id." LIMIT 1");
+    try {        
+        $sql = "DELETE FROM alarms WHERE id=:id LIMIT 1";
+        $db = new PDO('sqlite:coffeeAndPi');
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $id);
+        $stmt->execute();
         
         echo '{"success":true}';
     } 
