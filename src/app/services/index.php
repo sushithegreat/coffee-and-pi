@@ -15,7 +15,9 @@ $app->get('/', 'test');
 $app->get('/powerOn', 'powerOn');
 $app->get('/powerOff', 'powerOff');
 $app->get('/alarms/:id', 'getAlarm');
+$app->get('/alarms', 'getAlarms');
 $app->post('/alarms', 'addAlarm');
+$app->delete('/alarms/:id', 'removeAlarm');
 
 //run Slim
 $app->run();
@@ -26,21 +28,21 @@ function test() {
 }
 
 function powerOn() {
-	$gpio = new GPIO();
-	$gpio->setup(POWERPIN, "out");
-	$gpio->output(POWERPIN, 1);
+	// $gpio = new GPIO();
+	// $gpio->setup(POWERPIN, "out");
+	// $gpio->output(POWERPIN, 1);
 }
 
 function powerOff() {
-	$gpio = new GPIO();
-	$gpio->setup(POWERPIN, "out");
-	$gpio->output(POWERPIN, 0);
+	// $gpio = new GPIO();
+	// $gpio->setup(POWERPIN, "out");
+	// $gpio->output(POWERPIN, 0);
 }
 
 function getAlarm($id) {
-	$sql = "SELECT * FROM alarms WHERE id=:id";
-
-    try {
+	try {
+		$sql = "SELECT * FROM alarms WHERE id=:id";
+		
         $db = new PDO('sqlite:coffeeAndPi');
         $stmt = $db->prepare($sql);
         $stmt->bindParam("id", $id);
@@ -51,6 +53,47 @@ function getAlarm($id) {
         }
         else{
         	echo json_encode($alarm);
+        }        
+    } 
+    catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+}
+
+function getAlarms() {
+	try {
+		$sql = "SELECT * FROM alarms";
+		
+        $db = new PDO('sqlite:coffeeAndPi');
+        $stmt = $db->prepare($sql);
+		$stmt->execute();
+		
+		$alarms = $stmt->fetchAll();
+		
+        if($alarms == false){
+        	echo '{"error":{"text": "Could not find any alarms"}}';
+        }
+        else{
+			if (count($alarms) > 0) {
+				$returnAlarms = array();
+				foreach($alarms as $alarm) {
+					$alarmArray = array();
+					$alarmArray['id'] = $alarm["id"];
+					$alarmArray['su'] = $alarm["su"];
+					$alarmArray['mo'] = $alarm["mo"];
+					$alarmArray['tu'] = $alarm["tu"];
+					$alarmArray['we'] = $alarm["we"];
+					$alarmArray['th'] = $alarm["th"];
+					$alarmArray['fr'] = $alarm["fr"];
+					$alarmArray['sa'] = $alarm["sa"];
+					$alarmArray['time'] = $alarm["time"];
+					$alarmArray['enabled'] = $alarm["enabled"];
+					$returnAlarms[] = $alarmArray;
+				}
+				echo json_encode($returnAlarms);
+			} else {
+				echo '{"error":{"text": "Could not find any alarms"}}';
+			}
         }        
     } 
     catch(PDOException $e) {
@@ -86,5 +129,17 @@ function addAlarm() {
     }
 }
 
-
-
+// @todo this doesn't work and i am not sure why. getting false back for count
+// no errors are produced
+// it is definitely being called. i get the success:true back
+function removeAlarm($id) {
+    try {
+        $db    = new PDO('sqlite:coffeeAndPi');
+        $count = $db->exec("DELETE FROM alarms WHERE id=".$id." LIMIT 1");
+        
+        echo '{"success":true}';
+    } 
+    catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+}

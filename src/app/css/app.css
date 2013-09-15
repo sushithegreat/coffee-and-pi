@@ -1,6 +1,16 @@
 /* app css stylesheet */
 a, .nav, .pagination, .carousel a, .pointer { cursor: pointer; }
 
+.clearFloat { clear: both; }
+.modalAlert {
+	position: absolute;
+	margin: 0 auto;
+	text-align: center;
+	z-index: 9999;
+	width: 300px;
+	left: 10%;
+	right: 10%;
+}
 #container {
 	background: #231513;
 	color: #fff;
@@ -181,20 +191,6 @@ a.backButton, a.backButton:hover {
 	border-radius: 15px;
 }
 
-.alarmTime {
-	display: inline-block;
-	text-align: left;
-	margin-right: 45px;
-}
-.alarmDays {
-	display: inline-block;
-	text-align: left;
-	margin-right: 45px;
-}
-.alarmEnabled {
-	display: inline-block;	
-}
-
 .dayEnabled {
 	color: #fff;
 	font-weight: bold;
@@ -203,4 +199,45 @@ a.backButton, a.backButton:hover {
 .dayNotEnabled {
 	color: #A28E8E;
 	font-weight: normal;
+}
+
+.alarmList .alarmTime {
+	display: inline-block;
+	text-align: left;
+	margin-right: 45px;
+}
+.alarmList .alarmDays {
+	display: inline-block;
+	text-align: left;
+	margin-right: 45px;
+}
+.alarmList .alarmEnabled {
+	display: inline-block;	
+}
+.editAlarm .alarmTime {
+	display: inline-block;
+	text-align: left;
+	margin-right: 45px;
+}
+.editAlarm {
+	margin: 10px auto;
+	width: 470px;
+}
+
+.editAlarm .timePicker {
+	float: left;
+}
+.editAlarm .alarmDays {
+	float: left;
+	text-align: left;
+	vertical-align: bottom;
+	padding: 37px 25px 0 25px;
+}
+.editAlarm .alarmEnabled {
+	float: left;
+	padding: 34px 0px;
+}
+.editAlarm .alarmRemove {
+	float: left;
+	padding: 32px 0 0 25px;
 }
