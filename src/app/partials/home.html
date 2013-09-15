@@ -10,8 +10,8 @@
 	<div id="alarmEnabled">Next Brew: &nbsp;{{nextBrew}}</div>
 	
 	<p class="btn-group">
-		<a class="btn btn-primary" ng-tap="$navigate.go('/home')">Start</a>
-		<a class="btn btn-primary" ng-tap="$navigate.go('/home')">Stop</a>
+		<a class="btn btn-primary" data-ng-click="power(true)">Start</a>
+		<a class="btn btn-primary" data-ng-click="power(false)">Stop</a>
 		<a class="btn btn-primary" ng-tap="$navigate.go('/alarms')">Brew Times</a>
 	</p>
 </div>

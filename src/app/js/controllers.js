@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-function HomeCtrl($scope, $navigate) {
+function HomeCtrl($scope, $navigate, PowerService) {
 	$scope.$navigate = $navigate;
 	$scope.countDownHour  = "---";    
 	$scope.countDownMin   = "---";    
@@ -52,6 +52,19 @@ function HomeCtrl($scope, $navigate) {
     }, 1000);
 	
 	$scope.nextBrew = "Monday 05:00am";
+	
+	$scope.power = function (bool) {
+		if (bool) {
+			PowerService.powerOn({}, function() {
+				console.log("power on!!");
+			});
+		} else {
+			PowerService.powerOff({}, function() {
+				console.log("power off!!");
+			});
+		}
+
+	};
 }
 
 function AlarmListCtrl($scope, $navigate, AlarmService) {
