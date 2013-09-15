@@ -131,22 +131,6 @@ function addAlarm() {
 
 function removeAlarm($id) {
     try {    
-
-    	$sql = "SELECT * FROM alarms WHERE id=:id";
-		
-        $db = new PDO('sqlite:coffeeAndPi');
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $id);
-        $stmt->execute();
-        $alarm = $stmt->fetchObject();
-        if($alarm == false){
-        	echo '{"error":{"text": "Could not find alarm with that id"}}';
-        }
-        else{
-        	echo '{"test":{"text": going to delete id of '. $id .'}}';
-        }
-
-
         $sql = "DELETE FROM alarms WHERE id=:id LIMIT 1";
         $db = new PDO('sqlite:coffeeAndPi');
         $stmt = $db->prepare($sql);
