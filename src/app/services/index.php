@@ -26,25 +26,15 @@ function test() {
 }
 
 function powerOn() {
-	try{
-		$gpio = new GPIO();
-		$gpio->setup(POWERPIN, "out");
-		$gpio->output(POWERPIN, 1);
-	}
-	catch(Exception $e){
-		echo '{"error":{"text": "Something went wrong!"}}';
-	}
+	$gpio = new GPIO();
+	$gpio->setup(POWERPIN, "out");
+	$gpio->output(POWERPIN, 1);
 }
 
 function powerOff() {
-	try{
-		$gpio = new GPIO();
-		$gpio->setup(POWERPIN, "out");
-		$gpio->output(POWERPIN, 0);
-	}
-	catch(Exception $e){
-		echo '{"error":{"text": "Something went wrong!"}}';
-	}
+	$gpio = new GPIO();
+	$gpio->setup(POWERPIN, "out");
+	$gpio->output(POWERPIN, 0);
 }
 
 function getAlarm($id) {
