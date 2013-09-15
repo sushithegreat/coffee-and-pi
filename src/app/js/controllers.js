@@ -53,17 +53,25 @@ function HomeCtrl($scope, $navigate, PowerService) {
 	
 	$scope.nextBrew = "Monday 05:00am";
 	
-	$scope.power = function (bool) {
+	$scope.power = function(bool) {
 		if (bool) {
 			PowerService.powerOn({}, function() {
 				console.log("power on!!");
+				$scope.togglePowerMessage(true, "Your coffee is brewing!");
 			});
 		} else {
 			PowerService.powerOff({}, function() {
 				console.log("power off!!");
+				$scope.togglePowerMessage(false, "Your coffee has stopped brewing!");
 			});
 		}
 
+	};
+	
+	$scope.togglePowerMessage = function(bool, message) {
+		$scope.displayPowerMessage = bool;
+		$scope.powerMessage = message;
+		$scope.$apply();
 	};
 }
 
