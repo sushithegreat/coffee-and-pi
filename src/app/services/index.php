@@ -45,8 +45,12 @@ function getAlarm($id) {
 		
         $db = new PDO('sqlite:coffeeAndPi');
         $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $id);
-        $stmt->execute();
+        $stmt->bindParam('id', $id, PDO::PARAM_INT);
+        $res = $stmt->execute();
+        if($res === false){
+        	echo '{"error":{"text": "'.implode(' ', $stmt->errorInfo()).'"}}';
+        	return;
+        }
         $alarm = $stmt->fetchObject();
         if($alarm == false){
         	echo '{"error":{"text": "Could not find alarm with that id"}}';
@@ -66,7 +70,11 @@ function getAlarms() {
 		
         $db = new PDO('sqlite:coffeeAndPi');
         $stmt = $db->prepare($sql);
-		$stmt->execute();
+		$res = $stmt->execute();
+        if($res === false){
+        	echo '{"error":{"text": "'.implode(' ', $stmt->errorInfo()).'"}}';
+        	return;
+        }
 		
 		$alarms = $stmt->fetchAll();
 		
@@ -78,7 +86,7 @@ function getAlarms() {
 				$returnAlarms = array();
 				foreach($alarms as $alarm) {
 					$alarmArray = array();
-					$alarmArray['id'] = $alarm["id"];
+					$alarmArray['id'] = $alarm['id'];
 					$alarmArray['su'] = $alarm["su"];
 					$alarmArray['mo'] = $alarm["mo"];
 					$alarmArray['tu'] = $alarm["tu"];
@@ -119,7 +127,11 @@ function addAlarm() {
         $stmt->bindParam("time", $alarm->time);
         $stmt->bindParam("enabled", $alarm->enabled);
 
-        $stmt->execute();
+        $res = $stmt->execute();
+        if($res === false){
+        	echo '{"error":{"text": "'.implode(' ', $stmt->errorInfo()).'"}}';
+        	return;
+        }
         $alarm->id = $db->lastInsertId();
 
         echo json_encode($alarm);
@@ -134,8 +146,12 @@ function removeAlarm($id) {
         $sql = "DELETE FROM alarms WHERE id=:id LIMIT 1";
         $db = new PDO('sqlite:coffeeAndPi');
         $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $id);
-        $stmt->execute();
+        $stmt->bindParam('id', $id, PDO::PARAM_INT);
+        $res = $stmt->execute();
+        if($res === false){
+        	echo '{"error":{"text": "'.implode(' ', $stmt->errorInfo()).'"}}';
+        	return;
+        }
         
         echo '{"success":true}';
     } 
