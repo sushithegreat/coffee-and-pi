@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-function HomeCtrl($scope, $navigate, PowerService) {
+function HomeCtrl($scope, $navigate, PowerService, AlarmService) {
 	$scope.$navigate = $navigate;
 	$scope.countDownHour  = "---";    
 	$scope.countDownMin   = "---";    
