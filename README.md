@@ -13,6 +13,7 @@ Libraries
 =========
 
 PHP-GPIO: https://github.com/ronanguilloux/php-gpio
+<br>
 Slim (PHP REST Framework): http://www.slimframework.com/
 
 Notes
