@@ -14,7 +14,6 @@ $app = new \Slim\Slim();
 $app->get('/', 'test');
 $app->get('/powerOn', 'powerOn');
 $app->get('/powerOff', 'powerOff');
-$app->get('/alarms/next', 'getNextAlarm');
 $app->get('/alarms/:id', 'getAlarm');
 $app->get('/alarms', 'getAlarms');
 $app->post('/alarms', 'addAlarm');
@@ -67,40 +66,6 @@ function getAlarm($id) {
         else{
         	echo json_encode($alarm);
         }        
-    } 
-    catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
-    }
-}
-
-function getNextAlarm() {
-	try {
-		$sql = "SELECT * FROM alarms";
-		
-        $db = new PDO('sqlite:coffeeAndPi');
-        $stmt = $db->prepare($sql);
-		$res = $stmt->execute();
-        if($res === false){
-        	echo '{"error":{"text": "'.implode(' ', $stmt->errorInfo()).'"}}';
-        	return;
-        }
-		
-		$alarms = $stmt->fetchAll();
-		
-        if($alarms == false){
-        	echo '{"error":{"text": "Could not find any alarms"}}';
-        }
-        else{ 
-			if (count($alarms) > 0) {
-				$dayArray = array("su","mo","tu","we","th","fr","sa");
-				
-				// search through alarms and find the next one that will go on
-				
-				// return alarm like "getAlarm"
-			} else {
-				echo '{"error":{"text": "Could not find any alarms"}}';
-			}
-	    }  
     } 
     catch(PDOException $e) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
