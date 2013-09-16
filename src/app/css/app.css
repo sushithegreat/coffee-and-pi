@@ -1,5 +1,6 @@
 /* app css stylesheet */
-a, .nav, .pagination, .carousel a, .pointer { cursor: pointer; }
+a, .nav, .pagination, .carousel a, .pointer, #headTitle { cursor: pointer; }
+#su, #mo, #tu, #we, #th, #fr, #sa, #enabledIcon { cursor: pointer;}
 
 .clearFloat { clear: both; }
 .modalAlert {
@@ -201,7 +202,7 @@ a.backButton, a.backButton:hover {
 
 .dayNotEnabled {
 	color: #A28E8E;
-	font-weight: normal;
+	font-weight: bold;
 }
 
 .alarmList .alarmTime {
@@ -238,11 +239,24 @@ a.backButton, a.backButton:hover {
 }
 .editAlarm .alarmEnabled {
 	float: left;
-	padding: 34px 0px;
+	margin: 34px 0px;
+	background: url('../../app/img/alarmEnabled.png') top left no-repeat;
+	width: 25px;
+	height: 25px;
 }
-.editAlarm .alarmRemove {
+.editAlarm .alarmNotEnabled {
+	float: left;
+	margin: 34px 0px;
+	background: url('../../app/img/alarmDisabled.png') top left no-repeat;
+	width: 25px;
+	height: 25px;
+}
+.editAlarm .alarmSave {
 	float: left;
 	padding: 34px 0 0 15px;
+}
+.editAlarm .alarmRemove {
+	
 }
 .editAlarm .alarmAdd {
 	float: left;

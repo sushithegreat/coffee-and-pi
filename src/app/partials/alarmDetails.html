@@ -1,6 +1,6 @@
 <div id="header">
 	<a ng-tap="$navigate.go('/alarms')" class="backButton">Back</a>
-	<h1>BREWPi</h1>
+	<h1 ng-tap="$navigate.go('/')" id="headTitle">BREWPi</h1>
 </div>
 <div id="contentBody">
 	Edit Brew Time<br />
@@ -19,20 +19,21 @@
 		  </div>
 		</div>
 		<div class="alarmDays">
-			<span class="{{alarm.su | iif : 'dayEnabled' : 'dayNotEnabled'}}">S</span>
-			<span class="{{alarm.mo | iif : 'dayEnabled' : 'dayNotEnabled'}}">M</span>
-			<span class="{{alarm.tu | iif : 'dayEnabled' : 'dayNotEnabled'}}">T</span>
-			<span class="{{alarm.we | iif : 'dayEnabled' : 'dayNotEnabled'}}">W</span>
-			<span class="{{alarm.tu | iif : 'dayEnabled' : 'dayNotEnabled'}}">T</span>
-			<span class="{{alarm.fr | iif : 'dayEnabled' : 'dayNotEnabled'}}">F</span>
-			<span class="{{alarm.sa | iif : 'dayEnabled' : 'dayNotEnabled'}}">S</span>
+			<span class="{{alarm.su | iif : 'dayEnabled' : 'dayNotEnabled'}}" data-ng-click="toggleClass('su')" id="su">S</span>
+			<span class="{{alarm.mo | iif : 'dayEnabled' : 'dayNotEnabled'}}" data-ng-click="toggleClass('mo')" id="mo">M</span>
+			<span class="{{alarm.tu | iif : 'dayEnabled' : 'dayNotEnabled'}}" data-ng-click="toggleClass('tu')" id="tu">T</span>
+			<span class="{{alarm.we | iif : 'dayEnabled' : 'dayNotEnabled'}}" data-ng-click="toggleClass('we')" id="we">W</span>
+			<span class="{{alarm.tu | iif : 'dayEnabled' : 'dayNotEnabled'}}" data-ng-click="toggleClass('th')" id="th">T</span>
+			<span class="{{alarm.fr | iif : 'dayEnabled' : 'dayNotEnabled'}}" data-ng-click="toggleClass('fr')" id="fr">F</span>
+			<span class="{{alarm.sa | iif : 'dayEnabled' : 'dayNotEnabled'}}" data-ng-click="toggleClass('sa')" id="sa">S</span>
 		</div>
-		<div class="alarmEnabled">
-			<img src="{{alarm.enabled | iif : 'img/alarmEnabled.png' : 'img/alarmDisabled.png'}}" alt="" />
-		</div>
-		<div class="alarmRemove">
-			<a class="btn btn-primary" data-ng-click="toggleDeleteConfirmationPopup(true)">Remove</a>
+		<div class="{{alarm.enabled | iif : 'alarmEnabled' : 'alarmNotEnabled'}}" data-ng-click="toggleEnabledIcon()" id="enabledIcon"></div>
+		<div class="alarmSave">
+			<a class="btn btn-primary" ng-tap="$navigate.go('/alarms')">Save</a>
 		</div>
 		<div class="clearFloat" />
+	</div>
+	<div class="alarmRemove">
+		<a class="btn btn-primary" data-ng-click="toggleDeleteConfirmationPopup(true)">Remove</a>
 	</div>
 </div>

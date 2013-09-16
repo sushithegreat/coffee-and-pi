@@ -1,6 +1,6 @@
 <div id="header">
 	<a ng-tap="$navigate.go('/alarms')" class="backButton">Back</a>
-	<h1>BREWPi</h1>
+	<h1 ng-tap="$navigate.go('/')" id="headTitle">BREWPi</h1>
 </div>
 <div id="contentBody">
 	Add Brew Time<br />
@@ -12,17 +12,15 @@
 		  </div>
 		</div>
 		<div class="alarmDays">
-			<span class="dayNotEnabled">S</span>
-			<span class="dayNotEnabled">M</span>
-			<span class="dayNotEnabled">T</span>
-			<span class="dayNotEnabled">W</span>
-			<span class="dayNotEnabled">T</span>
-			<span class="dayNotEnabled">F</span>
-			<span class="dayNotEnabled">S</span>
+			<span class="dayNotEnabled" data-ng-click="toggleClass('su')" id="su">S</span>
+			<span class="dayNotEnabled" data-ng-click="toggleClass('mo')" id="mo">M</span>
+			<span class="dayNotEnabled" data-ng-click="toggleClass('tu')" id="tu">T</span>
+			<span class="dayNotEnabled" data-ng-click="toggleClass('we')" id="we">W</span>
+			<span class="dayNotEnabled" data-ng-click="toggleClass('th')" id="th">T</span>
+			<span class="dayNotEnabled" data-ng-click="toggleClass('fr')" id="fr">F</span>
+			<span class="dayNotEnabled" data-ng-click="toggleClass('sa')" id="sa">S</span>
 		</div>
-		<div class="alarmEnabled">
-			<img src="img/alarmDisabled.png" alt="" />
-		</div>
+		<div class="alarmNotEnabled" data-ng-click="toggleEnabledIcon()" id="enabledIcon"></div>
 		<div class="alarmAdd">
 			<a class="btn btn-primary" ng-tap="$navigate.go('/alarms')">Add</a>
 		</div>

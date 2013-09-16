@@ -115,6 +115,13 @@ function AlarmDetailCtrl($scope, $navigate, $routeParams, AlarmService) {
 		$scope.alarm.sa = alarm.sa == "1";
 	});
 	
+	$scope.toggleClass = function(day) {
+		$('#' + day).toggleClass('dayEnabled dayNotEnabled');
+	};
+	$scope.toggleEnabledIcon = function() {
+		$('#enabledIcon').toggleClass('alarmEnabled alarmNotEnabled');
+	};
+	
 	$scope.toggleDeleteConfirmationPopup = function(bool) {
 	    if (bool === true) {
 	        $scope.displayDeleteAlarmConfirmation = true;
@@ -133,6 +140,13 @@ function AlarmDetailCtrl($scope, $navigate, $routeParams, AlarmService) {
 
 function AlarmAddCtrl($scope, $navigate) {
 	$scope.$navigate = $navigate;
+	
+	$scope.toggleClass = function(day) {
+		$('#' + day).toggleClass('dayEnabled dayNotEnabled');
+	};
+	$scope.toggleEnabledIcon = function() {
+		$('#enabledIcon').toggleClass('alarmEnabled alarmNotEnabled');
+	};
 }
 
 function TimepickerCtrl($scope, $routeParams, AlarmService) {
