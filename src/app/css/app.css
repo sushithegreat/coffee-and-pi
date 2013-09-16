@@ -242,5 +242,9 @@ a.backButton, a.backButton:hover {
 }
 .editAlarm .alarmRemove {
 	float: left;
-	padding: 32px 0 0 25px;
+	padding: 34px 0 0 15px;
+}
+.editAlarm .alarmAdd {
+	float: left;
+	padding: 34px 0 0 15px;
 }

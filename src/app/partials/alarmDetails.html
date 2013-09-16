@@ -3,10 +3,10 @@
 	<h1>BREWPi</h1>
 </div>
 <div id="contentBody">
-	Edit Alarm<br />
+	Edit Brew Time<br />
 	<br />
 	<div class="modalAlert alert alert-block alert-error notification fade in" ng-show="displayDeleteAlarmConfirmation">
-        <h6>Are you sure you want to delete this alarm?</h6>
+        <h6>Are you sure you want to remove this brew time?</h6>
         <div class="form-controls-alert">
             <a class="btn" data-ng-click="toggleDeleteConfirmationPopup(false)">No</a>
             <a class="btn btn-danger" data-ng-click="deleteAlarm(alarm.id)">Yes</a>
@@ -31,7 +31,7 @@
 			<img src="{{alarm.enabled | iif : 'img/alarmEnabled.png' : 'img/alarmDisabled.png'}}" alt="" />
 		</div>
 		<div class="alarmRemove">
-			<a class="btn btn-primary" data-ng-click="toggleDeleteConfirmationPopup(true)">Delete</a>
+			<a class="btn btn-primary" data-ng-click="toggleDeleteConfirmationPopup(true)">Remove</a>
 		</div>
 		<div class="clearFloat" />
 	</div>
