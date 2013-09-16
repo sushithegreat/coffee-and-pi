@@ -57,21 +57,23 @@ function HomeCtrl($scope, $navigate, PowerService) {
 		if (bool) {
 			PowerService.powerOn({}, function() {
 				console.log("power on!!");
-				$scope.togglePowerMessage(true, "Your coffee is brewing!");
+				$scope.togglePowerMessage("Your coffee is brewing!");
 			});
 		} else {
 			PowerService.powerOff({}, function() {
 				console.log("power off!!");
-				$scope.togglePowerMessage(false, "Your coffee has stopped brewing!");
+				$scope.togglePowerMessage("Your coffee has stopped brewing!");
 			});
 		}
 
 	};
 	
-	$scope.togglePowerMessage = function(bool, message) {
-		$scope.displayPowerMessage = bool;
-		$scope.powerMessage = message;
-		$scope.$apply();
+	$scope.togglePowerMessage = function(message) {
+		$('#alertBox').show();
+		$("#alertMessage").text(message);
+		setTimeout(function() {
+		    $('#alertBox').fadeOut(1000);
+		}, 3000);
 	};
 }
 

@@ -11,6 +11,9 @@ a, .nav, .pagination, .carousel a, .pointer { cursor: pointer; }
 	left: 10%;
 	right: 10%;
 }
+#alertBox {
+	margin-top: 60px;
+}
 #container {
 	background: #231513;
 	color: #fff;

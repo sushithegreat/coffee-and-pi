@@ -2,8 +2,8 @@
 	<h1>BREWPi</h1>
 </div>
 <div id="contentBody">
-	<div class="modalAlert alert alert-block alert-error notification fade in" ng-show="displayPowerMessage">
-        <h6>{{$scope.powerMessage}}</h6>
+	<div class="modalAlert alert alert-block alert-error notification fade in" id="alertBox" style="display: none">
+        <h6 id="alertMessage"></h6>
     </div>
 	
 	<p class="todaysDate">{{todaysDate}}<p>
