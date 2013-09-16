@@ -75,23 +75,32 @@ function getAlarm($id) {
 
 function getNextAlarm() {
 	try {
-		$sql = "SELECT * FROM alarms WHERE id=:id";
+		$sql = "SELECT * FROM alarms";
 		
         $db = new PDO('sqlite:coffeeAndPi');
         $stmt = $db->prepare($sql);
-        $stmt->bindParam('id', $id, PDO::PARAM_INT);
-        $res = $stmt->execute();
+		$res = $stmt->execute();
         if($res === false){
         	echo '{"error":{"text": "'.implode(' ', $stmt->errorInfo()).'"}}';
         	return;
         }
-        $alarm = $stmt->fetchObject();
-        if($alarm == false){
-        	echo '{"error":{"text": "Could not find alarm with that id"}}';
+		
+		$alarms = $stmt->fetchAll();
+		
+        if($alarms == false){
+        	echo '{"error":{"text": "Could not find any alarms"}}';
         }
-        else{
-        	echo json_encode($alarm);
-        }        
+        else{ 
+			if (count($alarms) > 0) {
+				$dayArray = array("su","mo","tu","we","th","fr","sa");
+				
+				// search through alarms and find the next one that will go on
+				
+				// return alarm like "getAlarm"
+			} else {
+				echo '{"error":{"text": "Could not find any alarms"}}';
+			}
+	    }  
     } 
     catch(PDOException $e) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
