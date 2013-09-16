@@ -7,6 +7,9 @@ Install
 =======
 
 To create the database, run 'sqlite3 coffeeAndPi < createDb.sql' in the /src/app/services/ directory. Then 'chgrp www-data coffeeAndPi', then 'chmod g+w coffeeAndPi'.
+<br>
+Wiring instructions for the Raspberry Pi using the powertail can be found here: http://learn.adafruit.com/adafruits-raspberry-pi-lesson-13-power-control?view=all
+
 
 
 Libraries
@@ -18,6 +21,8 @@ Slim (PHP REST Framework): http://www.slimframework.com/
 
 Notes
 =====
+
+You'll need a coffee maker with a hard switch.
 
 Create a file at '/etc/udev/rules.d/10-gpio.rules' and add the following:
 
@@ -37,3 +42,6 @@ KERNEL=="gpio", SUBSYSTEM=="subsystem", ACTION=="add", PROGRAM="/bin/chmod 0220 
 </code></pre>
 
 Since the sqlite libraries actually open the sqlite database file directly (as opposed to opening a TCP or unix socket as is the case with a real DB server like MySQL), the sqlite database must have appropriate permissions. The database file itself (src/app/services/coffeeAndPi) should be writeable by the webserver. The most convenient permissions to get this to work involve setting the group ownership of coffeeAndPi to www-data and making the file group-writeable (chmod g+w coffeeAndPi). In addition, sqlite3 uses a journaling system where an additional temporary file is written beside the original database. As a result, the directory in which the database resides (src/app/services) must also be writable by the webserver.
+
+TODO
+====
