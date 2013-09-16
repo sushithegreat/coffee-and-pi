@@ -6,6 +6,7 @@ angular.module('coffeeAndPi', ['ajoslin.mobile-navigate','ui.bootstrap','coffeeA
   $routeProvider
 	.when("/home", {templateUrl: "partials/home.html", controller: HomeCtrl})
 	.when("/alarms", {templateUrl: "partials/alarms.html", controller: AlarmListCtrl})
+	.when("/alarms/add", {templateUrl: "partials/addAlarm.html", controller: AlarmAddCtrl})
 	.when("/alarms/:id", {templateUrl: "partials/alarmDetails.html", controller: AlarmDetailCtrl})
 	.otherwise({redirectTo: "/home"});
 }).directive('ngTap', function() {

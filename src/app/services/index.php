@@ -14,6 +14,7 @@ $app = new \Slim\Slim();
 $app->get('/', 'test');
 $app->get('/powerOn', 'powerOn');
 $app->get('/powerOff', 'powerOff');
+$app->get('/alarms/next', 'getNextAlarm');
 $app->get('/alarms/:id', 'getAlarm');
 $app->get('/alarms', 'getAlarms');
 $app->post('/alarms', 'addAlarm');
@@ -48,6 +49,31 @@ function powerOff() {
 }
 
 function getAlarm($id) {
+	try {
+		$sql = "SELECT * FROM alarms WHERE id=:id";
+		
+        $db = new PDO('sqlite:coffeeAndPi');
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam('id', $id, PDO::PARAM_INT);
+        $res = $stmt->execute();
+        if($res === false){
+        	echo '{"error":{"text": "'.implode(' ', $stmt->errorInfo()).'"}}';
+        	return;
+        }
+        $alarm = $stmt->fetchObject();
+        if($alarm == false){
+        	echo '{"error":{"text": "Could not find alarm with that id"}}';
+        }
+        else{
+        	echo json_encode($alarm);
+        }        
+    } 
+    catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+}
+
+function getNextAlarm() {
 	try {
 		$sql = "SELECT * FROM alarms WHERE id=:id";
 		

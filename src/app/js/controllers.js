@@ -131,14 +131,20 @@ function AlarmDetailCtrl($scope, $navigate, $routeParams, AlarmService) {
 	};
 }
 
-function TimepickerCtrl($scope, $routeParams, AlarmService) {
-	AlarmService.get({id: $routeParams.id}, function(alarm) {
-		console.log(alarm);
-		var initialTime = alarm.time;
-		$scope.myTime = new Date(initialTime*1000);
+function AlarmAddCtrl($scope, $navigate) {
+	$scope.$navigate = $navigate;
+}
 
-		$scope.hstep = 1;
-		$scope.mstep = 1;
-		$scope.ismeridian = true;
-	});
+function TimepickerCtrl($scope, $routeParams, AlarmService) {
+	if ($routeParams.id % 1 === 0) {
+		AlarmService.get({id: $routeParams.id}, function(alarm) {
+			console.log(alarm);
+			var initialTime = alarm.time;
+			$scope.myTime = new Date(initialTime*1000);
+
+			$scope.hstep = 1;
+			$scope.mstep = 1;
+			$scope.ismeridian = true;
+		});
+	}
 };
