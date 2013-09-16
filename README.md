@@ -45,3 +45,10 @@ Since the sqlite libraries actually open the sqlite database file directly (as o
 
 TODO
 ====
+Database redesign<br>
+Add new alarm<br>
+Edit existing alarm<br>
+Show next active alarm on the homepage<br>
+Add logic to automatically turn off after x amount of time<br>
+
+
