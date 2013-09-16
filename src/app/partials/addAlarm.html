@@ -1,0 +1,31 @@
+<div id="header">
+	<a ng-tap="$navigate.go('/alarms')" class="backButton">Back</a>
+	<h1>BREWPi</h1>
+</div>
+<div id="contentBody">
+	Add Brew Time<br />
+	<br />
+	<div class="editAlarm">
+		<div ng-controller="TimepickerCtrl" class="timePicker">
+		  <div ng-model="myTime" ng-change="changed()" style="display:inline-block;">
+		    <timepicker hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+		  </div>
+		</div>
+		<div class="alarmDays">
+			<span class="dayNotEnabled">S</span>
+			<span class="dayNotEnabled">M</span>
+			<span class="dayNotEnabled">T</span>
+			<span class="dayNotEnabled">W</span>
+			<span class="dayNotEnabled">T</span>
+			<span class="dayNotEnabled">F</span>
+			<span class="dayNotEnabled">S</span>
+		</div>
+		<div class="alarmEnabled">
+			<img src="img/alarmDisabled.png" alt="" />
+		</div>
+		<div class="alarmAdd">
+			<a class="btn btn-primary" ng-tap="$navigate.go('/alarms')">Add</a>
+		</div>
+		<div class="clearFloat" />
+	</div>
+</div>
