@@ -28,15 +28,15 @@ function test() {
 }
 
 function powerOn() {
-	// $gpio = new GPIO();
-	// $gpio->setup(POWERPIN, "out");
-	// $gpio->output(POWERPIN, 1);
+	$gpio = new GPIO();
+	$gpio->setup(POWERPIN, "out");
+	$gpio->output(POWERPIN, 1);
 }
 
 function powerOff() {
-	// $gpio = new GPIO();
-	// $gpio->setup(POWERPIN, "out");
-	// $gpio->output(POWERPIN, 0);
+	$gpio = new GPIO();
+	$gpio->setup(POWERPIN, "out");
+	$gpio->output(POWERPIN, 0);
 }
 
 function getAlarm($id) {
