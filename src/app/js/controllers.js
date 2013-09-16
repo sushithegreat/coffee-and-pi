@@ -146,5 +146,11 @@ function TimepickerCtrl($scope, $routeParams, AlarmService) {
 			$scope.mstep = 1;
 			$scope.ismeridian = true;
 		});
+	} else {
+		$scope.myTime = new Date();
+
+		$scope.hstep = 1;
+		$scope.mstep = 1;
+		$scope.ismeridian = true;
 	}
 };
